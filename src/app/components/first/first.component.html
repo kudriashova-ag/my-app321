@@ -1,0 +1,25 @@
+{{count}}
+<button (click)="increment()">+</button>
+
+
+<h1 [hidden]="!isActive">Welcome, {{user}}!</h1>
+
+<input type="text" value="{{user}}">
+<input type="text" [value]="user"><br>
+
+<input type="text" [(ngModel)]="user">
+<input type="checkbox" [(ngModel)]="isActive">
+
+<div *ngIf="fruits.length>0" [ngClass]="{active: isActive}">
+    <h1>Fruits</h1>
+    {{fruits.join(', ')}}
+    <ul>
+        @for (fruit of fruits; track $index) {
+            <li>{{fruit}}</li>
+        }
+    </ul>
+    
+    <ul>
+        <li *ngFor="let fruit of fruits">{{fruit}}</li>
+    </ul>
+</div>
