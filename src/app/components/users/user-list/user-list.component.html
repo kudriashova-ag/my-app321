@@ -1,0 +1,22 @@
+<h1>Users</h1>
+
+<button (click)="toggleIsAddUserOpen()">Add User</button>
+
+<div *ngIf="isAddUserOpen">
+    <form #myForm="ngForm">
+        <div>
+            <input type="text" #username="ngModel" placeholder="User Name" [(ngModel)]="userName" required
+                pattern="^[a-zA-Z]{2,}$">
+            <div class="error" *ngIf="username.invalid && username.dirty"> Name is invalid </div>
+        </div>
+        <div>
+            <input type="text" placeholder="User Email" [(ngModel)]="userEmail" required #useremail="ngModel">
+            <div class="error" *ngIf="useremail.invalid && useremail.dirty"> Name is invalid </div>
+        </div>
+        <button (click)="addUser()" [disabled]="username.invalid || useremail.invalid">Add</button>
+    </form>
+</div>
+
+<div *ngFor="let user of users">
+    <app-user-single [user]="user"></app-user-single>
+</div>
